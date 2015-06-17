@@ -42,17 +42,3 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
-# Noib Notes:
-
-#        I think a good first step would be to make a few very simple Rails apps. Use the Hartl book and the Rails guides as references, shoot me an email if you're stuck for more than 20-30 minutes.
-
-# Task: build a basic bookmarker
-
-# Make a new Rails app that allows a user to manage a list of bookmarks. The root path should take the user to an 'index' page that displays a list of all the links added so far. 
-
-# From the index, the user should be able to click a button 'New Bookmark' that takes them to a page where they can fill out a form to add a new link and an optional name for that link (the URL itself should be required though). If the user attempts to create a new link without a URL, the form should be re-rendered with a helpful error message set using the flash. 
-
-# The user should also be able to delete any given link from the index page as well.
-
-# Note: Rails has a CLI command for generating most of this functionality automatically called 'scaffold'. Feel free to take a look at what it does, but do not use it. Write the code to implement this on your own.
