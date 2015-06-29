@@ -1,0 +1,17 @@
+<h1>Listing bookmarks</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Link</th>
+    <th>Description</th>
+  </tr>
+
+  <% @bookmarks.each do |bookmark| %>
+    <tr>
+      <td><%= bookmark.title %></td>
+      <td><a href=<%= bookmark.link %>><%= bookmark.link %></a></td>
+      <td><%= bookmark.description %></td>
+    </tr>
+  <% end %>
+</table>
