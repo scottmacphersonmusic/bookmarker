@@ -13,8 +13,11 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = Bookmark.new(bookmark_params)
 
-    @bookmark.save
-    redirect_to @bookmark
+    if @bookmark.save
+      redirect_to @bookmark
+    else
+      render 'new'
+    end
   end
 
   private
