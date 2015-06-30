@@ -19,6 +19,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(bookmark_params)
 
     if @bookmark.save
+      flash[:success] = "Bookmark successfully created!"
       redirect_to @bookmark
     else
       render 'new'
@@ -29,6 +30,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.find(params[:id])
 
     if @bookmark.update(bookmark_params)
+      flash[:success] = "Bookmark successfully updated!"
       redirect_to @bookmark
     else
       render 'edit'
