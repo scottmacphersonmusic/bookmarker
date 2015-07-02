@@ -1,16 +1,14 @@
 <% if @bookmark.errors.any? %>
 
 <div id="error_explanation">
-  <div class="alert alert-danger">
-    <h2>
-      <%= pluralize(@bookmark.errors.count, "error") %> prohibited
-      this bookmark from being saved:
-    </h2>
-    <ul>
-      <% @bookmark.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
+  <h2>
+    <%= pluralize(@bookmark.errors.count, "error") %> prohibited
+    this bookmark from being saved:
+  </h2>
+  <ul>
+    <% @bookmark.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
 </div>
 <% end %>
