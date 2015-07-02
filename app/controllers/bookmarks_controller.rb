@@ -22,7 +22,6 @@ class BookmarksController < ApplicationController
       flash[:success] = "Bookmark successfully created!"
       redirect_to @bookmark
     else
-      flash.now[:danger] = "There was an error creating your bookmark."
       render 'new'
     end
   end
@@ -34,7 +33,6 @@ class BookmarksController < ApplicationController
       flash[:success] = "Bookmark successfully updated!"
       redirect_to @bookmark
     else
-      flash.now[:danger] = "There was an error updating your bookmark."
       render 'edit'
     end
   end

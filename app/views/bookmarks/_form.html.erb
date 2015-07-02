@@ -1,7 +1,6 @@
-<!-- <%= render 'error_messages' %> -->
-<%= form_for @bookmark, role: 'form' do |f| %>
+<%= render 'error_messages' %>
 
-<div class="form-horizontal">
+<%= form_for @bookmark, role: 'form', class: 'form-horizontal' do |f| %>
 <div class="form-group">
   <%= f.label :title, class: 'col-sm-2 control-label' %>
   <div class= 'col-sm-10'>
@@ -21,7 +20,6 @@
   <div class="col-sm-10">
     <%= f.text_field :description, class: 'form-control' %>
   </div>
-</div>
 </div>
 
 <div class="col-sm-offset-2 col-sm-10">
