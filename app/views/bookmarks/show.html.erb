@@ -1,17 +1,17 @@
-<p>
-  <strong>Title:</strong>
-  <%= @bookmark.title %>
-</p>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th>Title</th>
+      <th>Link</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><%= @bookmark.title %></td>
+      <td><a href=<%= @bookmark.link %>><%= @bookmark.link %></a></td>
+      <td><%= @bookmark.description %></td>
+    </tr>
+  </table>
 
-<p>
-  <strong>Link:</strong>
-  <%= @bookmark.link %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @bookmark.description %>
-</p>
-
-<%= link_to 'Edit', edit_bookmark_path(@bookmark) %>
-<%= link_to 'Back', bookmarks_path %>
+  <%= link_to 'Edit', edit_bookmark_path(@bookmark), class: 'btn btn-info btn-sm' %>
+  <%= link_to 'Back', bookmarks_path, class: 'btn btn-info btn-sm' %>
+</div>

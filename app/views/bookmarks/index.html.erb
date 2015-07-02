@@ -1,23 +1,24 @@
-<%= render 'navbar' %>
-
-<table>
-  <tr>
-    <th>Link</th>
-    <th>Description</th>
-  </tr>
-
-  <% @bookmarks.each do |bookmark| %>
-  <tr>
-    <% unless bookmark.title == "" %>
-      <td><a href=<%= bookmark.link %>><%= bookmark.title %></a></td>
-    <% else %>
-      <td><a href=<%= bookmark.link %>><%= bookmark.link %></a></td>
+<div class="container">
+  <table class="table table-hover table-striped">
+    <tr>
+      <th>Link</th>
+      <th>Description</th>
+    </tr>
+    <% @bookmarks.each do |bookmark| %>
+    <tr>
+      <% unless bookmark.title == "" %>
+        <td><a href=<%= bookmark.link %> class="btn btn-link"><%= bookmark.title %></a></td>
+      <% else %>
+        <td><a href=<%= bookmark.link %> class="btn btn-link"><%= bookmark.link %></a></td>
+      <% end %>
+      <td><%= bookmark.description %></td>
+      <td><%= link_to 'Edit', edit_bookmark_path(bookmark), class:
+              'btn btn-info btn-sm' %></td>
+      <td><%= link_to 'Delete', bookmark_path(bookmark),
+              class: 'btn btn-danger btn-sm',
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
-    <td><%= bookmark.description %></td>
-    <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-    <td><%= link_to 'Delete', bookmark_path(bookmark),
-            method: :delete,
-            data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-  <% end %>
-</table>
+  </table>
+</div>
