@@ -1,0 +1,8 @@
+#error_explanation.panel.panel-danger
+  .panel-heading
+    %h3.panel-title
+      = "#{pluralize(@bookmark.errors.count, "error")} prohibited this bookmark from being saved:"
+  .panel-content
+    %ul
+      - @bookmark.errors.full_messages.each do |msg|
+        %li= msg
