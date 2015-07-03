@@ -1,12 +1,11 @@
-.container
-  %table.table
-    %tr
-      %th Title
-      %th Link
-      %th Description
-    %tr
-      %td= @bookmark.title
-      %td= link_to @bookmark.link, @bookmark.link
-      %td= @bookmark.description
-  = link_to 'Edit', edit_bookmark_path(@bookmark), class: 'btn btn-info btn-sm'
-  = link_to 'Back', bookmarks_path, class: 'btn btn-info btn-sm'
+%table.table
+  %tr
+    %th Title
+    %th Link
+    %th Description
+  %tr
+    %td= @bookmark.title
+    %td= link_to @bookmark.link, @bookmark.link
+    %td= @bookmark.description
+= link_to 'Edit', edit_bookmark_path(@bookmark), class: 'btn btn-info btn-sm'
+= link_to 'Back', bookmarks_path, class: 'btn btn-info btn-sm'
