@@ -55,7 +55,28 @@ class BookmarksControllerTest < ActionController::TestCase
   end
 
   test "should not save without a link" do
-    bookmark = Bookmark.new
+    bookmark = Bookmark.new(title: "Netflix", description: "video streaming")
     refute bookmark.save, "Saved the bookmark without a link"
   end
+
+  test "should create bookmark" do
+    assert_difference('Bookmark.count') do
+      post :create, bookmark: { link: "https://www.google.com" }
+    end
+    assert_redirected_to bookmark_path(assigns(:bookmark))
+    assert_equal "Bookmark successfully created!", flash[:success]
+  end
+
+  test "should update bookmark" do
+    patch :update, id: @bookmark, bookmark: { link: "www.grooveshark.com" }
+    assert_redirected_to bookmark_path(assigns(:bookmark))
+  end
+
+  test "should destroy bookmark" do
+    assert_difference('Bookmark.count', -1) do
+      delete :destroy, id: @bookmark.id
+    end
+    assert_redirected_to bookmarks_path
+  end
+
 end
