@@ -25,6 +25,12 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_not_nil assigns(:bookmark)
   end
 
+  test "show should render correct template and layout" do
+    get :show, id: @bookmark
+    assert_template :show
+    assert_template layout: "layouts/application"
+  end
+
   test "should get new" do
     get :new
     assert_response :success
@@ -33,6 +39,18 @@ class BookmarksControllerTest < ActionController::TestCase
   test "new should render correct template and layout" do
     get :new
     assert_template :new
+    assert_template layout: 'layouts/application', partial: '_form'
+  end
+
+  test "should get edit" do
+    get :edit, id: @bookmark
+    assert_response :success
+    assert_not_nil assigns(:bookmark)
+  end
+
+  test "edit should render correct template and layout" do
+    get :edit, id: @bookmark
+    assert_template :edit
     assert_template layout: 'layouts/application', partial: '_form'
   end
 
