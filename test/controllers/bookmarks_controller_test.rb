@@ -19,6 +19,10 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_select "title", "Bookmarker"
   end
 
+  test "should route to index" do
+    assert_routing bookmarks_path, { controller: "bookmarks", action: "index" }
+  end
+
   test "should show bookmark" do
     get :show, id: @bookmark
     assert_response :success
@@ -31,15 +35,24 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_template layout: "layouts/application"
   end
 
+  test "should route to show" do
+    assert_routing "bookmarks/1", { controller: "bookmarks", action: "show", id: "1"}
+  end
+
   test "should get new" do
     get :new
     assert_response :success
+    assert_not_nil assigns(:bookmark)
   end
 
   test "new should render correct template and layout" do
     get :new
     assert_template :new
     assert_template layout: 'layouts/application', partial: '_form'
+  end
+
+  test "should route to new" do
+    assert_routing "bookmarks/new", { controller: "bookmarks", action: "new" }
   end
 
   test "should get edit" do
@@ -54,8 +67,12 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_template layout: 'layouts/application', partial: '_form'
   end
 
+  test "should route to edit" do
+    assert_routing "bookmarks/1/edit", { controller: "bookmarks", action: "edit", id: "1"  }
+  end
+
   test "should not save without a link" do
-    bookmark = Bookmark.new(title: "Netflix", description: "video streaming")
+    bookmark = Bookmark.new
     refute bookmark.save, "Saved the bookmark without a link"
   end
 
@@ -67,9 +84,19 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_equal "Bookmark successfully created!", flash[:success]
   end
 
+  test "should route to create bookmark" do
+    assert_routing({ method: "post", path: "/bookmarks" },
+                   { controller: "bookmarks", action: "create" })
+  end
+
   test "should update bookmark" do
     patch :update, id: @bookmark, bookmark: { link: "www.grooveshark.com" }
     assert_redirected_to bookmark_path(assigns(:bookmark))
+  end
+
+  test "should route to update bookmark" do
+    assert_routing({ method: "patch", path: "/bookmarks/1" },
+                   { controller: "bookmarks", action: "update", id: "1" })
   end
 
   test "should destroy bookmark" do
@@ -79,4 +106,8 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_redirected_to bookmarks_path
   end
 
+  test "should route to destroy bookmark" do
+    assert_routing({ method: "delete", path: "/bookmarks/1" },
+                   { controller: "bookmarks", action: "destroy", id: "1" })
+  end
 end
