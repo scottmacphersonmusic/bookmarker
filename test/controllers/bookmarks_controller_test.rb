@@ -84,6 +84,12 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_equal "Bookmark successfully created!", flash[:success]
   end
 
+  test "create should display error messages if not valid" do
+    post :create, bookmark: { link: "" }
+    assert_template :new
+    assert_template partial: "_error_messages"
+  end
+
   test "should route to create bookmark" do
     assert_routing({ method: "post", path: "/bookmarks" },
                    { controller: "bookmarks", action: "create" })
@@ -93,6 +99,16 @@ class BookmarksControllerTest < ActionController::TestCase
     patch :update, id: @bookmark, bookmark: { link: "www.grooveshark.com" }
     assert_redirected_to bookmark_path(assigns(:bookmark))
     assert_equal "Bookmark successfully updated!", flash[:success]
+  end
+
+  test "shouldn't update bookmark without a link" do
+   refute @bookmark.update(link: "")
+  end
+
+  test "update should display error message if not valid" do
+    patch :update, id: @bookmark, bookmark: { link: "" }
+    assert_template "edit"
+    assert_template partial: "_error_messages"
   end
 
   test "should route to update bookmark" do
