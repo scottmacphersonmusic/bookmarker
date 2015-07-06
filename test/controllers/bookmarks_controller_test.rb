@@ -92,6 +92,7 @@ class BookmarksControllerTest < ActionController::TestCase
   test "should update bookmark" do
     patch :update, id: @bookmark, bookmark: { link: "www.grooveshark.com" }
     assert_redirected_to bookmark_path(assigns(:bookmark))
+    assert_equal "Bookmark successfully updated!", flash[:success]
   end
 
   test "should route to update bookmark" do
@@ -104,6 +105,7 @@ class BookmarksControllerTest < ActionController::TestCase
       delete :destroy, id: @bookmark.id
     end
     assert_redirected_to bookmarks_path
+    assert_equal "Bookmark successfully deleted!", flash[:success]
   end
 
   test "should route to destroy bookmark" do
