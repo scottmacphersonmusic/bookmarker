@@ -12,5 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bs_js_modules
 //= require_tree .
