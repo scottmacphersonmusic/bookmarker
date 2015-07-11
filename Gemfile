@@ -16,6 +16,8 @@ gem 'sass-rails', '~> 5.0'
 
 gem 'sqlite3', '1.3.10'
 
+gem 'therubyracer', '0.12.2', platforms: :ruby
+
 group :development, :test do
   gem 'web-console', '~> 2.0'
 end
