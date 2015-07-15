@@ -1,7 +1,9 @@
 - if @bookmark.errors.any?
   = render 'error_messages'
 
-= form_for @bookmark, role: 'form', class: 'form-horizontal' do |f|
+= form_for @bookmark, role: 'form', class: 'form-horizontal',
+  action: '/autotitle/create' do |f|
+  -# action: '/autotitle/create' doesn't override form_for @bookmark
   .form-group
     = f.label :title, class: 'col-sm-2 control-label'
     .col-sm-10

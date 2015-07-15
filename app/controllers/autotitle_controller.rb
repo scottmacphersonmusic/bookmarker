@@ -1,6 +1,8 @@
 class AutotitleController < ApplicationController
-  respond_to :json
+  respond_to :html, :json
 
-  def new
+  def create
+
+    render layout: false
   end
 end

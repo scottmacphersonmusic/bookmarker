@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   root 'bookmarks#index'
 
-  get 'autotitle/:new', to: 'autotitle#new'
+  post 'autotitle/:create', to: 'autotitle#create', as: :autotitle
 end
