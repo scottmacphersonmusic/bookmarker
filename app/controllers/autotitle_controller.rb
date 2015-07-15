@@ -1,4 +1,6 @@
 class AutotitleController < ApplicationController
-  def get_url
+  respond_to :json
+
+  def new
   end
 end
