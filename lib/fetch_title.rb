@@ -13,7 +13,12 @@ module FetchTitle
   end
 
   def fetch_title(url)
-    page = Page.get(url)
-    page.css('title').text.lstrip.rstrip
+    begin
+      page = Page.get(url)
+    rescue
+      return "Invalid URL"
+    else
+      page.css('title').text.lstrip.rstrip
+    end
   end
 end
