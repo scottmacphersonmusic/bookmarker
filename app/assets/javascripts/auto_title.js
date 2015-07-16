@@ -1,6 +1,6 @@
 function onTitleRetrievalSuccess(data, status, xhr) {
-  $(#bookmark_title).val(data);
-
+  // $(#bookmark_title).val(data);
+  console.log(data);
 }
 
 function path(name) {

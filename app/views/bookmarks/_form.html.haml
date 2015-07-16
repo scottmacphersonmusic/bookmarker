@@ -1,9 +1,6 @@
 - if @bookmark.errors.any?
   = render 'error_messages'
 
-#routes{hidden: 'true'}
-  #autotitle_create_path= autotitle_create_path
-
 = form_for @bookmark, role: 'form', class: 'form-horizontal' do |f|
   .form-group
     = f.label :title, class: 'col-sm-2 control-label'
