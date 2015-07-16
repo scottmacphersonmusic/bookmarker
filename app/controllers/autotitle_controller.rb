@@ -1,8 +1,7 @@
 class AutotitleController < ApplicationController
-  respond_to :html, :json
+  respond_to :json
 
   def create
-
-    render layout: false
+    render json: { url: params[:url] }
   end
 end

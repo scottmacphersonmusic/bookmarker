@@ -1,15 +1,23 @@
-$(function() {
-  var $link = $('#bookmark_link');
-  var $action = $('form').attr('action');
-  console.log($action)
+function onTitleRetrievalSuccess(data, status, xhr) {
+  console.log(data);
+}
 
-  $link.on('input', function() {
-    var link = this.value;
+function path(name) {
+  return $("#routes #" + name).text();
+}
 
-    $.ajax({
-      type: 'POST',
-      url: $action,
-      data: $.param({ url: link })
-    });
+function retrieveTitleSuggestion() {
+  var link = this.value;
+  var url = path('autotitle_create_path');
+
+  $.ajax({
+    type: 'POST',
+    url: url,
+    data: $.param({ url: link }),
+    success: onTitleRetrievalSuccess
   });
+}
+
+$(function() {
+  $('#bookmark_link').on('input', retrieveTitleSuggestion);
 });
