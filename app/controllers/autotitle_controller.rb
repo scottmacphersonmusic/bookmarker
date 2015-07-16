@@ -1,7 +1,9 @@
 class AutotitleController < ApplicationController
+  include FetchTitle
   respond_to :json
 
   def create
-    render json: { url: params[:url] }
+    title = fetch_title(params[:url])
+    render json: { title: title }
   end
 end
