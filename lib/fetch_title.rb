@@ -1,6 +1,6 @@
-module FetchTitle
-  require 'nokogiri'
+require 'nokogiri'
 
+module FetchTitle
   class HtmlParserIncluded < HTTParty::Parser
     def html
       Nokogiri::HTML(body)
