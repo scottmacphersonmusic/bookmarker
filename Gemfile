@@ -12,6 +12,8 @@ gem 'httparty', '0.13.5'
 
 gem 'jquery-rails', '4.0.4'
 
+gem 'mocha', '1.1.0'
+
 gem 'nokogiri', '1.6.6.2'
 
 gem 'rails', '4.2.1'
