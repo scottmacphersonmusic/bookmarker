@@ -3,6 +3,10 @@ class AutotitleController < ApplicationController
 
   def create
     title = PageParser::LinkInfo.new(params[:url]).title
-    render json: { title: title }
+    unless title.nil?
+      render json: { title: title }
+    else
+      render json: { error: "Error: Unable to find title of given URL" }
+    end
   end
 end
