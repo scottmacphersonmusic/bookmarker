@@ -1,11 +1,11 @@
 require 'test_helper'
-require 'open-uri'
 
 class PageParserTest < ActionController::TestCase
-  # test "should print title" do
-  #   html = open("/Users/scottmacpherson/Projects/bookmarker/test/fixtures/sample.html")
-  #   PageParser::Page.any_instance.stubs(:get).returns(html)
-  #   puts PageParser::LinkInfo.new("doesnt matter").title
-  #   html.close
-  # end
+  test "#title should return title if present" do
+    markup = "<title>a valid title</title>"
+    PageParser::LinkInfo.any_instance
+                        .stubs(:page)
+                        .returns(Nokogiri::HTML(markup))
+    assert_equal "a valid title", PageParser::LinkInfo.new("doesnt matter").title
+  end
 end
