@@ -17,10 +17,6 @@ module PageParser
       @url = url
     end
 
-    def valid?
-      page.present?
-    end
-
     def title
       if valid?
         return page.css('title').text.lstrip.rstrip
@@ -37,6 +33,10 @@ module PageParser
       rescue
         return nil
       end
+    end
+
+    def valid?
+      page.present?
     end
   end
 end
