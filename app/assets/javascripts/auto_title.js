@@ -7,7 +7,7 @@ function path(name) {
 }
 
 function retrieveTitleSuggestion() {
-  var link = this.value;
+  var link = encodeURI(this.value);
   var url = path('autotitle_create_path');
 
   $.ajax({
